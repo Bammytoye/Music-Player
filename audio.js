@@ -374,24 +374,32 @@ const ulTag = container.querySelector("ul");
 
 //Playing Particular Songs Click
 const allLiTags = ulTag.querySelectorAll("li");
-    function playingSong () {
-        for (let j = 0; j < allLiTags.length; j++) {
-            let audioTag = allLiTags[j].querySelector(".audio-duration");
-            //removing playing class from all other li
-            if(allLiTags[j].getAttribute("playing")){
-                allLiTags[j].classList.remove("playing");
-                
-                let adDuration = audioTag.getAttribute("t-duration");
-                audioTag.innerText = adDuration;
-            }
-            
-            if(allLiTags[j].getAttribute("li-index")== musicIndex){
-                allLiTags[j].classList.add("playing");
-                audioTag.innerText = "playing";
-            }
-            allLiTags[j].setAttribute("onclick", "clicked(this)");
-    }   
+
+function playingSong() {
+    for (let j = 0; j < allLiTags.length; j++) {
+        let audioTag = allLiTags[j].querySelector(".audio-duration");
+
+        // Remove playing class from all other li
+        if (allLiTags[j].getAttribute("playing")) {
+            allLiTags[j].classList.remove("playing");
+
+            let adDuration = audioTag.getAttribute("t-duration");
+            audioTag.innerText = adDuration;
+        }
+
+        // Assuming musicIndex is a variable defined somewhere in your code
+        if (allLiTags[j].getAttribute("li-index") == musicIndex) {
+            allLiTags[j].classList.add("playing");
+            audioTag.innerText = "playing";
+        }
+
+        // Use addEventListener to handle click events instead of setting onclick attribute
+        allLiTags[j].addEventListener("click", function() {
+            clicked(this);
+        });
+    }
 }
+
         //Click songs on Li
     function clicked(element) {
         
