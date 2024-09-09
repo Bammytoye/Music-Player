@@ -371,7 +371,6 @@ const ulTag = container.querySelector("ul");
             liAudioDurationTag.setAttribute("t-duration", `${totalMin}:${totalSec}`);
         });
     }
-
 //Playing Particular Songs Click
 const allLiTags = ulTag.querySelectorAll("li");
 
